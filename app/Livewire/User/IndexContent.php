@@ -24,19 +24,33 @@ class IndexContent extends Component
     public function add($id){
         $product = pro::find($id);
 
-       if($product){
-        carts::create([
-            'productname'   => $product->productname,
-            'productprice' => $product->productprice,
-            'photo' => $product->photo,
-        ]);
-        $this->resetPage();
-//add sang iban nga function dire if gusto mo haha
-$this->dialog([
-    'title'       => 'Added to cart',
-    'description' => 'The product was added to cart',
-    'icon'        => 'success'
-]);
+        if($product){
+            $product = pro::find($id);
+
+        if ($product) {
+            // Check if the user is authenticated
+            if (auth()->check()) {
+                $user = auth()->user();
+
+                carts::create([
+                    'user_id'      => $user->id, // Associate the cart entry with the user
+                    'productname'  => $product->productname,
+                    'productprice' => $product->productprice,
+                    'photo'        => $product->photo,
+                ]);
+
+                $this->resetPage();
+
+                $this->dialog([
+                    'title'       => 'Added to cart',
+                    'description' => 'The product was added to cart',
+                    'icon'        => 'success',
+                ]);
+            } else {
+                // Handle the case where the user is not authenticated (optional)
+            }
        }
     }
 }
+}
+

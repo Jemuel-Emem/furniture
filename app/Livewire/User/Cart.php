@@ -130,8 +130,7 @@ class Cart extends Component
     }
 
     public function ordernow(){
-        $selectedProductList = $this->getSelectedProducts();
-
+     $selectedProductList = $this->getSelectedProducts();
     $totalPrice = $this->calculateTotalPrice($selectedProductList);
 
     Order::create([

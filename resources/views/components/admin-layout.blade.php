@@ -32,11 +32,11 @@
     <x-notifications position="top-right" />
 <div class="relative">
     <div class="w-screen h-screen">
-        <img src="{{ asset('images/logo2.png') }}" alt="" class="w-full h-full blur-sm">
+        <img src="{{ asset('images/bg1.jpg') }}" alt="" class="w-full h-full blur-sm">
     </div>
     <div class="absolute top-2 w-screen ">
         <div class="w-full mx-auto bg-white border-b 2xl:max-w-8xl">
-            <div x-data="{ open: false }" class="relative flex flex-col w-full p-5 mx-auto bg-white md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
+            <div x-data="{ open: false }" class="relative flex flex-col w-full p-5 mx-auto bg-amber-900 text-white md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
               <div class="flex flex-row items-center justify-between lg:justify-start">
                 <a class="text-lg tracking-tight text-black uppercase focus:outline-none focus:ring lg:text-2xl" href="/">
                   <img src="{{ asset('images/logonani.png') }}" alt="" class="w-16 h-20">
@@ -49,17 +49,20 @@
                 </button>
               </div>
               <nav :class="{'flex': open, 'hidden': !open}" class="flex-col items-center flex-grow hidden md:pb-0 md:flex md:justify-end md:flex-row">
-                <a class="px-2 py-2 text-sm text-gray-500 lg:ml-auto lg:px-6 md:px-3 hover:text-blue-600" href="#">
+                <a class="px-2 py-2 text-sm text-white lg:ml-auto lg:px-6 md:px-3 hover:text-gray-200" href="{{ route('customers') }}">
                   Customers
                 </a>
-                <a href="{{ route('products') }}" class="px-2 py-2 text-sm text-gray-500 lg:px-6 md:px-3 hover:text-blue-600" href="#">
+                <a href="{{ route('products') }}" class="px-2 py-2 text-sm text-white lg:px-6 md:px-3 hover:text-gray-200" href="#">
                   Products
                 </a>
-                <a class="px-2 py-2 text-sm text-gray-500 lg:px-6 md:px-3 hover:text-blue-600" href="{{ route('dileverysched') }}">
+                <a class="px-2 py-2 text-sm text-white lg:px-6 md:px-3 hover:text-gray-200" href="{{ route('dileverysched') }}">
                     Delivery Schedule
                   </a>
-                <a class="px-2 py-2 text-sm text-gray-500 lg:px-6 md:px-3 hover:text-blue-600" href="{{ route('order') }}">
+                <a class="px-2 py-2 text-sm text-white lg:px-6 md:px-3 hover:text-gray-200" href="{{ route('order') }}">
                 Orders
+                </a>
+                <a class="px-2 py-2 text-sm text-white lg:px-6 md:px-3 hover:text-gray-200" >
+                    Customize Order
                 </a>
                 <div class="inline-flex items-center gap-2 list-none lg:ml-auto">
 
@@ -86,7 +89,7 @@
     </div>
 
     <div class="absolute right-4 " style="top: 620px;">
-        <a href="{{ route('chatify') }}" class=""><i class="ri-messenger-fill text-8xl text-green-600 hover:text-green-700"></i></a>
+        <a href="{{ route('chatify') }}" class=""><i class="ri-messenger-fill text-8xl text-amber-800 hover:text-amber-700"></i></a>
     </div>
 
 </div>

@@ -109,6 +109,10 @@
         </div>
     </div>
 
+    <div class="absolute right-4 " style="top: 620px;">
+        <a href="{{ route('chatify') }}" class=""><i class="ri-messenger-fill text-8xl text-amber-800 hover:text-amber-700"></i></a>
+    </div>
+
     @stack('scripts')
 </body>
 

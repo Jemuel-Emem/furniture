@@ -22,14 +22,12 @@
                         Phonenumber
                           </th>
                          <th scope="col" class="px-6 py-3 mr-12">
-                            Order List
+                           Email
                           </th>
                         <th scope="col" class="px-6 py-3 mr-12">
-                         Total Order
+                         Password
                         </th>
-                         <th scope="col" class="px-6 py-3 mr-12">
-                           Status
-                        </th>
+
                     </tr>
                 </thead>
                 <tbody style="width: 2000px;">
@@ -45,17 +43,13 @@
                             {{ $cot->phonenumber}}
                         </td>
                         <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white items-center">
-                            {{ $cot->productlist }}
+                            {{ $cot->email }}
                         </td>
                         <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            {{ $cot->totalorder }}
+                            {{ $cot->password }}
                         </td>
 
-                        <td class="px-6 py-4 ">
-                          <span>
-                            <button class="text-white hover:bg-yellow-900 bg-yellow-800 rounded p-2 w-32" wire:click="confirmOrder({{ $cot->id }})">Confirm</button>
-                          </span>
-                        </td>
+
 
 
                     </tr>

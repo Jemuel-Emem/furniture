@@ -25,7 +25,7 @@ class Order extends Component
     public function confirmOrder($orderId)
     {
 
-        $order = order::find($orderId);
+        $order = orders::find($orderId);
         if ($order) {
 
             ds::create([

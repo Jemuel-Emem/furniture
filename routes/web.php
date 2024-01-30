@@ -49,6 +49,10 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('/order', function () {
         return view('admin.order');
     })->name('order');
+
+    Route::get('/customers', function () {
+        return view('admin.customers');
+    })->name('customers');
 });
 
 Route::prefix('user')->middleware('user')->group(function () {
