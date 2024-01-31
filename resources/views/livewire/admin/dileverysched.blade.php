@@ -27,8 +27,11 @@
                         <th scope="col" class="px-6 py-3 mr-12">
                          Total Order
                         </th>
+                        <th scope="col" class="px-6 py-3 mr-12">
+                         Scheduled Order
+                           </th>
                          <th scope="col" class="px-6 py-3 mr-12">
-                           Status
+                          Modify
                         </th>
                     </tr>
                 </thead>
@@ -50,10 +53,14 @@
                         <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             {{ $cot->totalorder }}
                         </td>
+                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            {{ $cot->schedule }}
+                        </td>
+
 
                         <td class="px-6 py-4 ">
                           <span>
-                            <button class="text-white hover:bg-yellow-900 bg-yellow-800 rounded p-2 w-32" wire:click="confirmOrder({{ $cot->id }})">Confirm</button>
+                            <button class="text-white hover:bg-yellow-900 bg-yellow-800 rounded p-2 w-32" wire:click="editSchedule({{ $cot->id }})">modify</button>
                           </span>
                         </td>
 
@@ -77,39 +84,23 @@
         </div>
     </div>
 
-        <x-modal wire:model.defer="open_modal">
-            <x-card title="Add Product">
+        <x-modal wire:model.defer="edit_modal">
+            <x-card title="Modify Dilevery Schedule">
                 <div class="space-y-3">
                     <div class="flex gap-2">
-                        <x-input label="Product Name" placeholder="" wire:model="productname" required />
+                        <x-input label="Product Name" placeholder="" wire:model="deliveryschedule" required />
                       </div>
-                  <div class="flex gap-2">
-                    <x-input label="Product Price" placeholder="" wire:model="productprice" required/>
-                  </div>
-                  <div class="flex gap-2">
-
-                    <x-textarea wire:model="description" label="Product Description" placeholder=".." class="w-80" required/>
-                  </div>
-                  <div class="flex gap-2">
-
-                    <x-textarea wire:model="stocks" label="Stocks" placeholder=".." class="w-80" required/>
-                  </div>
-
-
-                  <div class="flex gap-2">
-                    <input type="file" wire:model="photo" accept="image/*" required>
-                  </div>
-
-
-
                 </div>
 
                 <x-slot name="footer">
                     <div class="flex justify-end gap-x-4">
-                        <x-button flat label="Cancel" x-on:click="close"  wire:click="back"/>
-                        <x-button class="bg-amber-900 hover:bg-amber-950 text-white" label="Submit" wire:click="submit" spinner="submit" />
+                        <x-button flat label="Cancel" x-on:click="close"  />
+                        <x-button class="bg-amber-900 hover:bg-amber-950 text-white" label="Set" wire:click="update" spinner="Set" />
                     </div>
                 </x-slot>
             </x-card>
         </x-modal>
+
+
+
     </div>

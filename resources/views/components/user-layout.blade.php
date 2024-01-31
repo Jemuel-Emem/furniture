@@ -73,6 +73,9 @@
                 <a href="" class="hover:text-gray-400 mr-2">Customize</a>
               </li>
               <li>
+                <a href="{{ route('myorder') }}" class="hover:text-gray-400 mr-2">My Order</a>
+              </li>
+              <li>
                 @php
               $user = auth()->user();
                $totalCartItems = $user ? $user->carts()->count() : 0;

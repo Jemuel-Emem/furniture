@@ -68,6 +68,10 @@ Route::prefix('user')->middleware('user')->group(function () {
         return view('user.cart');
     })->name('cart');
 
+    Route::get('/myorder', function () {
+        return view('user.myorder');
+    })->name('myorder');
+
 
 
 });

@@ -13,11 +13,13 @@ return new class extends Migration
     {
         Schema::create('deliveryscheds', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->nullable()->constrained();
             $table->string('name');
             $table->string('address');
             $table->string('phonenumber');
             $table->string('productlist');
             $table->string('totalorder');
+            $table->string('schedule')->default("Delivery status not set");
             $table->timestamps();
         });
     }

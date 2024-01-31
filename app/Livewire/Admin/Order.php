@@ -24,20 +24,32 @@ class Order extends Component
     }
     public function confirmOrder($orderId)
     {
-
         $order = orders::find($orderId);
-        if ($order) {
+         if($order){
 
-            ds::create([
-                'name' => $order->name,
-                'address' => $order->address,
-                'phonenumber' => $order->phonenumber,
-                'productlist' => $order->productlist,
-                'totalorder' => $order->totalorder,
 
-            ]);
+            if (auth()->check()) {
 
-            $order->delete();
+
+                ds::create([
+                    'user_id'      => $order->user_id,
+                    'name'         => $order->name,
+                    'address'      => $order->address,
+                    'phonenumber'  => $order->phonenumber,
+                    'productlist'  => $order->productlist,
+                    'totalorder'   => $order->totalorder,
+                ]);
+
+                $order->delete();
+
+
+            } else {
+
+            }
         }
     }
-}
+
+    }
+
+
+

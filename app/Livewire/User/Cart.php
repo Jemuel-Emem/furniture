@@ -134,12 +134,14 @@ class Cart extends Component
     $totalPrice = $this->calculateTotalPrice($selectedProductList);
 
     Order::create([
+        'user_id'=> auth()->user()->id,
         'name' => auth()->user()->name,
         'address' => auth()->user()->address,
         'phonenumber' => auth()->user()->phonenumber,
         'productlist' => json_encode($selectedProductList),
         'totalorder' => $totalPrice,
     ]);
+
     $this->deleteSelectedProducts();
     $this->resetSelectedProducts();
     $this->resetTotalPrice();
