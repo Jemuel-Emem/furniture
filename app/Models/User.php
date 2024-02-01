@@ -2,6 +2,7 @@
 
 namespace App\Models;
 use App\Models\Cart;
+use App\Models\Order;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -50,5 +51,10 @@ class User extends Authenticatable
     public function carts()
     {
         return $this->hasMany(Cart::class);
+    }
+
+    public function myorder()
+    {
+        return $this->hasMany(Deliverysched::class);
     }
 }

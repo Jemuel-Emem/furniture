@@ -20,6 +20,17 @@
         [x-cloak] {
             display: none;
         }
+
+        #chatify-icon-container {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1000;
+    }
+
+    .chatify-icon {
+        display: block;
+    }
     </style>
 
 
@@ -70,10 +81,18 @@
                 <a href="{{ route('prod') }}" class="hover:text-gray-400 mr-2">All Products</a>
               </li>
               <li>
-                <a href="" class="hover:text-gray-400 mr-2">Customize</a>
+                <a href="{{ route('customize') }}" class="hover:text-gray-400 mr-2">Customize</a>
               </li>
               <li>
-                <a href="{{ route('myorder') }}" class="hover:text-gray-400 mr-2">My Order</a>
+                @php
+                $user = auth()->user();
+                $order = $user ? $user->myorder()->count() : 0;
+            @endphp
+            <a href="{{ route('myorder') }}" class="hover:text-gray-400 mr-2">My Order
+                @if ($order > 0)
+                    <span class="text-yellow-500">({{ $order }})</span>
+                @endif
+            </a>
               </li>
               <li>
                 @php
@@ -112,11 +131,40 @@
         </div>
     </div>
 
-    <div class="absolute right-4 " style="top: 620px;">
-        <a href="{{ route('chatify') }}" class=""><i class="ri-messenger-fill text-8xl text-amber-800 hover:text-amber-700"></i></a>
+    <div id="chatify-icon-container">
+        <a href="{{ route('chatify') }}" class="chatify-icon">
+            <i class="ri-messenger-fill text-8xl text-blue-500 hover:text-blue-600"></i>
+        </a>
     </div>
 
     @stack('scripts')
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var iconContainer = document.getElementById('chatify-icon-container');
+            var isDragging = false;
+            var offsetX, offsetY;
+
+            iconContainer.addEventListener('mousedown', function (e) {
+                isDragging = true;
+                offsetX = e.clientX - iconContainer.getBoundingClientRect().left;
+                offsetY = e.clientY - iconContainer.getBoundingClientRect().top;
+            });
+
+            document.addEventListener('mousemove', function (e) {
+                if (isDragging) {
+                    var x = e.clientX - offsetX;
+                    var y = e.clientY - offsetY;
+
+                    iconContainer.style.left = x + 'px';
+                    iconContainer.style.top = y + 'px';
+                }
+            });
+
+            document.addEventListener('mouseup', function () {
+                isDragging = false;
+            });
+        });
+    </script>
 </body>
 
 </html>

@@ -53,6 +53,10 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('/customers', function () {
         return view('admin.customers');
     })->name('customers');
+
+    Route::get('/customize', function () {
+        return view('admin.customize');
+    })->name('customizes');
 });
 
 Route::prefix('user')->middleware('user')->group(function () {
@@ -72,7 +76,9 @@ Route::prefix('user')->middleware('user')->group(function () {
         return view('user.myorder');
     })->name('myorder');
 
-
+    Route::get('/customize', function () {
+        return view('user.customize');
+    })->name('customize');
 
 });
 

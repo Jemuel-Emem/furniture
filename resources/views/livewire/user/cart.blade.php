@@ -2,7 +2,7 @@
     <div class="grid md:grid-cols-1 grid-col-1 gap-4 relative">
        <div class="flex justify-end">
 
-        <button wire:click="calculateTotalPrice"><span class="text-right underline text-blue-500 hover:text-blue-600">View Order</span></button>
+        <button wire:click="calculateTotalPrice"><span class="text-right underline text-green-500 hover:text-green-600">View Order</span></button>
        </div>
         @foreach($product as $cot)
             <x-card title="{{ $cot->productname }}" class="w-80 text-amber-700 ">

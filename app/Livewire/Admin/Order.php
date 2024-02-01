@@ -27,10 +27,7 @@ class Order extends Component
         $order = orders::find($orderId);
          if($order){
 
-
             if (auth()->check()) {
-
-
                 ds::create([
                     'user_id'      => $order->user_id,
                     'name'         => $order->name,
