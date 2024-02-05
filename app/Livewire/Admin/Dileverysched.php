@@ -6,13 +6,15 @@ use WireUi\Traits\Actions;
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;
 use Livewire\Component;
+use Carbon\Carbon;
+
 
 class Dileverysched extends Component
 {
     use  WithPagination;
     use Actions;
     use WithFileUploads;
-    public $search, $deliveryschedule, $guest_id ;
+    public $search, $status,$date, $guest_id ;
     public $edit_modal = false;
     public function render()
     {
@@ -32,7 +34,8 @@ class Dileverysched extends Component
 
            if ($data) {
 
-               $this->deliveryschedule = $data->schedule;
+               $this->status= $data->status;
+               $this->date= $data->dileverydate;
                $this->edit_modal=true;
                $this->guest_id = $data->id;
             }
@@ -44,9 +47,10 @@ class Dileverysched extends Component
          $data =ds::where('id', $this->guest_id)->first();
 
          $data->update([
-            'schedule' => $this->deliveryschedule,
-
+            'status' => $this->status,
+            'deliverydate' => Carbon::parse(trim($this->date))->toDateString(),
          ]);
+
          $this->notification()->success(
              $title = 'Status Update',
              $description = 'The status has been updated successfully'

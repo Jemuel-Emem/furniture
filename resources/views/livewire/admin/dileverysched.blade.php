@@ -1,15 +1,15 @@
 <div>
 
-    <div class="" >
-        <div class="flex gap-2 mt-2">
+
+        <div class="flex gap-2 mt-2  p-4">
             <x-input label="" placeholder="Search..." wire:model="search" />
         <div>
             <x-button  label="Search " wire:click.prevent="asss" green />
         </div>
 
         </div>
-        <div class=" overflow-x-auto mt-4  flex justify-center w-full" >
-            <table class=" text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 " >
+        <div class="  mt-4  flex justify-center w-screen" >
+            <table class=" text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 p-4 md:w-screen" >
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 ">
                     <tr class="">
                         <th scope="col" class="px-6 py-3 mr-12">
@@ -28,8 +28,11 @@
                          Total Order
                         </th>
                         <th scope="col" class="px-6 py-3 mr-12">
-                         Scheduled Order
+                         Dilevery Date
                            </th>
+                        <th scope="col" class="px-6 py-3 mr-12">
+                            Status
+                        </th>
                          <th scope="col" class="px-6 py-3 mr-12">
                           Modify
                         </th>
@@ -54,8 +57,16 @@
                             {{ $cot->totalorder }}
                         </td>
                         <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            {{ $cot->schedule }}
+                            {{ $cot->deliverydate }}
                         </td>
+
+                        <td class="px-6 py-4 font-medium whitespace-nowrap dark:text-white "
+                        @if($cot->status == 'Pending') style="color: orange"
+
+                        @elseif($cot->status == 'Done') style="color: green"
+                        @endif>
+                        {{ $cot->status }}
+                    </td>
 
 
                         <td class="px-6 py-4 ">
@@ -82,13 +93,23 @@
                 </tfoot>
             </table>
         </div>
-    </div>
+
 
         <x-modal wire:model.defer="edit_modal">
             <x-card title="Modify Dilevery Schedule">
                 <div class="space-y-3">
                     <div class="flex gap-2">
-                        <x-input label="Product Name" placeholder="" wire:model="deliveryschedule" required />
+                        <x-native-select label="Select Status" wire:model.defer="status">
+                            <option>Active</option>
+                            <option>Pending</option>
+                            <option>Done</option>
+                        </x-native-select>
+                        <x-datetime-picker
+                        without-time
+                          label="Dilevery Date"
+                          placeholder=""
+                        wire:model.defer="date"
+                                       />
                       </div>
                 </div>
 

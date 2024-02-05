@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Livewire\User;
+use Illuminate\Support\Facades\Auth;
 use App\Models\customize as cuz;
 use Livewire\WithFileUploads;
 use WireUi\Traits\Actions;
@@ -28,10 +29,15 @@ class Customize extends Component
         $photolike = $this->photo->store('photos', 'public');
 
         cuz::create([
+            'user_id'=>auth::user()->id,
+            'name'=>auth::user()->name,
+            'address'=>auth::user()->address,
+            'phonenumber'=>auth::user()->phonenumber,
             'material' => $this->material,
             'furnituretype' => $this->furnituretype,
             'photo'=>$photolike
         ]);
+
         $this->notification()->success(
             $title = 'Customize saved!',
             $description = 'Your customize product was added successfully'

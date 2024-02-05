@@ -16,8 +16,10 @@
     :options="['Table', 'Chair', 'Bed', 'Book Cased', 'Dressers', 'Desks', 'Ottoman']"
     wire:model="furnituretype"
 />
-<label class="block  text-sm font-medium text-gray-900 dark:text-white" for="multiple_files">Upload Your Preffered Design Here</label>
-<input class="block w-full text-xl text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="multiple_files" type="file" wire:model="photo" accept="photo/*" multiple>
+<label for="">Preferred Design</label>
+<div class="flex gap-2">
+    <input type="file" wire:model="photo" accept="image/*" required >
+  </div>
 <x-button icon="arrow-circle-down" amber label="Order Now" wire:click="ordernow"/>
  </div>
 </div>

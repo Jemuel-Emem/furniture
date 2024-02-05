@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('customizes', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->nullable()->constrained();
+            $table->string('name');
+            $table->string('address');
+            $table->string('phonenumber');
             $table->string('material');
             $table->string('furnituretype');
             $table->string('photo');

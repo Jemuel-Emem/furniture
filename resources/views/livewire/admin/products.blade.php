@@ -1,7 +1,7 @@
 <div>
 
 <div class="" >
-    <div class="flex gap-2 mt-2">
+    <div class="flex gap-2 mt-2 p-4">
         <x-input label="" placeholder="Search..." wire:model="search" />
     <div>
         <x-button  label="Search " wire:click.prevent="asss" green />
@@ -9,8 +9,8 @@
 
     <button class="bg-amber-900 text-white hover:bg-amber-950 w-36 rounded"  wire:click="add">Add Product </button>
     </div>
-    <div class="relative overflow-x-auto mt-4  flex justify-center" >
-        <table class=" text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+    <div class="relative overflow-x-auto mt-4  flex justify-center w-screen" >
+        <table class=" text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 w-screen p-4">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr class="">
                     <th scope="col" class="px-6 py-3 mr-12">
@@ -56,10 +56,19 @@
                     </td>
 
                     <td class="px-6 py-4 ">
-                      <span>
-                        <button class="text-green-700">Edit</button>
-                        <button class="text-red-700">Delete</button>
-                      </span>
+                      <span class="flex gap-4">
+                        <x-button positive  wire:click="edit({{ $cot->id }})" label="Positive" />
+                        <div x-data="{ title: 'Sure Delete?' }">
+                            <x-button label="Delete" negative
+                                x-on:confirm="{
+                                    title,
+                                    icon: 'warning',
+                                    method: 'delete',
+                                    params: {{ $cot->id }}
+                                }"
+                            />
+                        </div>
+                    </span>
                     </td>
 
 
@@ -91,17 +100,16 @@
               <div class="flex gap-2">
                 <x-input label="Product Price" placeholder="" wire:model="productprice" required/>
               </div>
-              <div class="flex gap-2">
 
-                <x-textarea wire:model="description" label="Product Description" placeholder=".." class="w-80" required/>
+              <div class="flex gap-2">
+                <x-input label="Stocks" placeholder="" wire:model="stocks" required/>
               </div>
               <div class="flex gap-2">
-
-                <x-textarea wire:model="stocks" label="Stocks" placeholder=".." class="w-80" required/>
+                <x-textarea wire:model="description" label="Product Description" placeholder=".." class="" style="width: 630px;" required/>
               </div>
 
-
               <div class="flex gap-2">
+
                 <input type="file" wire:model="photo" accept="image/*" required>
               </div>
 
@@ -113,6 +121,48 @@
                 <div class="flex justify-end gap-x-4">
                     <x-button flat label="Cancel" x-on:click="close"  wire:click="back"/>
                     <x-button class="bg-amber-900 hover:bg-amber-950 text-white" label="Submit" wire:click="submit" spinner="submit" />
+                </div>
+            </x-slot>
+        </x-card>
+    </x-modal>
+
+
+    <x-modal wire:model.defer="edit_modal">
+        <x-card title="Update Product">
+            <div class="space-y-3">
+                <div class="flex gap-2">
+                    <x-input label="Product Name" placeholder="" wire:model="productname" required />
+                  </div>
+              <div class="flex gap-2">
+                <x-input label="Product Price" placeholder="" wire:model="productprice" required/>
+              </div>
+
+              <div class="flex gap-2">
+                <x-input label="Stocks" placeholder="" wire:model="stocks" required/>
+              </div>
+              <div class="flex gap-2">
+                <x-textarea wire:model="description" label="Product Description" placeholder=".." class="" style="width: 630px;" required/>
+              </div>
+
+
+
+             <div>
+            @if($currentPhoto)
+             <div class="mt-2">
+             <img src="{{ $currentPhoto }}" alt="Current Photo" class="w-80 h-32 rounded">
+             </div>
+             @endif
+           </div>
+              <div class="flex gap-2">
+                <input type="file" wire:model="photo" accept="image/*" required>
+              </div>
+
+            </div>
+
+            <x-slot name="footer">
+                <div class="flex justify-end gap-x-4">
+                    <x-button flat label="Cancel" x-on:click="close" />
+                    <x-button class="bg-amber-900 hover:bg-amber-950 text-white" label="Update" wire:click="Update"  />
                 </div>
             </x-slot>
         </x-card>

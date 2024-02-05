@@ -1,20 +1,26 @@
 <div>
 
-    <div class="" >
-        <div class="flex gap-2 mt-2">
+
+        <div class="flex gap-2 mt-2 p-4" >
             <x-input label="" placeholder="Search..." wire:model="search" />
         <div>
             <x-button  label="Search " wire:click.prevent="asss" green />
         </div>
 
         </div>
-        <div class=" overflow-x-auto mt-4  flex justify-center w-full" >
-            <table class=" text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 " >
+        <div class=" overflow-x-auto mt-4  flex justify-center w-screen p-4" >
+            <table class=" text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 w-screen " >
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 ">
                     <tr class="">
                         <th scope="col" class="px-6 py-3 mr-12">
                            Name
                          </th>
+                         <th scope="col" class="px-6 py-3 mr-12">
+                            Phone Number
+                          </th>
+                          <th scope="col" class="px-6 py-3 mr-12">
+                           Address
+                          </th>
                          <th scope="col" class="px-6 py-3 mr-12">
                             Order List
                           </th>
@@ -31,6 +37,12 @@
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                         <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             {{ $cot->name}}
+                        </td>
+                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            {{ $cot->phonenumber}}
+                        </td>
+                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            {{ $cot->address}}
                         </td>
                         <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white items-center">
                             {{ $cot->productlist }}
@@ -64,7 +76,7 @@
                 </tfoot>
             </table>
         </div>
-    </div>
+
 
         <x-modal wire:model.defer="open_modal">
             <x-card title="Add Product">

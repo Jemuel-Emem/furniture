@@ -15,7 +15,7 @@ class Cart extends Component
     use WithPagination;
     use Actions;
     use WithFileUploads;
-
+    public $agree = false;
     public $open_modal = false;
     public $selectedProducts = [];
     public $selectedProductList = [];
@@ -30,6 +30,9 @@ class Cart extends Component
             $this->quantities[$product->id] = 1;
         }
     }
+    protected $rules = [
+        'agree' => 'accepted',
+    ];
 
     public function render()
     {
@@ -48,9 +51,13 @@ class Cart extends Component
     return view('livewire.user.cart', [
         'product' => $userCarts,
         'totalcart' => $totalcart,
+        'agree' => $this->agree,
     ]);
     }
-
+    public function toggleAgree()
+    {
+        $this->validateOnly('agree');
+    }
     public function getTotalCart()
     {
         $total = carts::count();
@@ -130,6 +137,7 @@ class Cart extends Component
     }
 
     public function ordernow(){
+        $this->validate();
      $selectedProductList = $this->getSelectedProducts();
     $totalPrice = $this->calculateTotalPrice($selectedProductList);
 

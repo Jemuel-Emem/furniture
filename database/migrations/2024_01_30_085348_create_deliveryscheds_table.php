@@ -19,7 +19,8 @@ return new class extends Migration
             $table->string('phonenumber');
             $table->string('productlist');
             $table->string('totalorder');
-            $table->string('schedule')->default("Delivery status not set");
+            $table->date('deliverydate')->nullable();
+            $table->string('status')->default("Pending");
             $table->timestamps();
         });
     }

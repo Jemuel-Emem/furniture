@@ -14,14 +14,31 @@
               <span class="font-bold">Total Fee:</span>
               <span class=" rounded-xl p-1 text-sm">{{ $order->totalorder }}</span>
               <span class="font-bold">Dilevery Date:</span>
-              <span class=" rounded-xl p-1 text-sm">{{ $order->schedule }}</span>
+              <span class=" rounded-xl p-1 text-sm">{{ $order->deliverydate }}</span>
+              <span class="font-bold">Status:</span>
+              @if ($order->status=='Pending')
+              <span class=" rounded-xl p-2 text-sm bg-orange-600 text-white md:text-start text-center">{{ $order->status }}</span>
+              @elseif ($order->status=='Done')
+              <span class=" rounded-xl p-2 text-sm bg-green-600 text-white md:text-start text-center">{{ $order->status }}</span>
+              @endif
               <i class="<i ri-calendar-schedule-line md:text-4xl text-8xl absolute right-2 md:top-0 top-16 text-green-500"></i>
             </div>
-                    {{-- <td>{{ $order->address }}</td>
-                    <td>{{ $order->productlist }}</td>
-                    <td>{{ $order->totalorder }}</td>
-                    <td>{{ $order->schedule }}</td> --}}
-
+            @if ($order->status=='Pending')
+               <span>.</span>
+            @elseif ($order->status=='Done')
+            <div class="flex justify-end">
+                <div x-data="{ title: 'Sure Delete?' }">
+                    <x-button label="Delete" danger
+                        x-on:confirm="{
+                            title,
+                            icon: 'warning',
+                            method: 'delete',
+                            params: {{ $order->id }}
+                        }"
+                    />
+                </div>
+            @endif
+            </div>
             </x-card>
     </div>
     @endforeach

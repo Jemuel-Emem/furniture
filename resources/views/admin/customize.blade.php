@@ -1,3 +1,9 @@
-<div>
-    <!-- The whole future lies in uncertainty: live immediately. - Seneca -->
-</div>
+<x-admin-layout>
+    <div>
+
+        <div class="flex justify-center mt-4 ">
+            <livewire:admin.customize />
+        </div>
+
+    </div>
+</x-admin-layout>

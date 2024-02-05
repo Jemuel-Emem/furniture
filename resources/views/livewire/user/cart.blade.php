@@ -16,7 +16,17 @@
                     <div class="flex justify-between items-center">
                         <label for="" class="text-amber-700">{{ $cot->productprice }} Php</label>
                         <div>
-                            <button class="text-red-500 underline hover:text-red-600" wire:click="delete({{ $cot->id }})">Delete</button>
+                            <div x-data="{ title: 'Sure Delete?' }">
+                                <x-button label="Delete" danger
+                                    x-on:confirm="{
+                                        title,
+                                        icon: 'warning',
+                                        method: 'delete',
+                                        params: {{ $cot->id }}
+                                    }"
+                                />
+                            </div>
+
                         </div>
                     </div>
                     <x-checkbox id="checkbox_{{ $cot->id }}" wire:model="selectedProducts.{{ $cot->id }}" />
@@ -45,11 +55,15 @@
             <div class="space-y-3 absolute top-20 right-10">
                 <p class="md:text-2xl text-xl text-yellow-400">Total Price: {{ $totalPrice }} Php</p>
             </div>
+            <x-checkbox id="left-label" left-label="Agree" wire:model="agree" wire:click="toggleAgree" />
+            Terms of Agreement:
 
             <x-slot name="footer">
                 <div class="flex justify-end gap-x-4">
                     <x-button flat label="Cancel" x-on:click="close" />
+
                     <x-button class="bg-amber-900 hover:bg-amber-950 text-white" label="Order Now" wire:click="ordernow" />
+
                 </div>
             </x-slot>
         </x-card>

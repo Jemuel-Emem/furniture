@@ -9,7 +9,7 @@ class Deliverysched extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'user_id', 'name', 'address', 'phonenumber', 'productlist', 'totalorder', 'schedule'
+        'user_id', 'name', 'address', 'phonenumber', 'productlist', 'totalorder', 'status', 'deliverydate',
     ];
 
 

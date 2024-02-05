@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Furniture') }}</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -44,7 +44,7 @@
 
     @livewireScripts
     <x-dialog z-index="z-50" blur="md" align="center" />
-
+    <x-notifications position="top-right" />
     <nav class=" bg-amber-900 border-gray-200  ">
         <div class=" flex flex-wrap items-center justify-between mx-auto p-4">
             <a class="text-lg tracking-tight text-white font-black uppercase focus:outline-none focus:ring lg:text-2xl" href="/">

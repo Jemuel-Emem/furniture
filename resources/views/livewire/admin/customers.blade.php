@@ -1,15 +1,15 @@
 <div>
 
     <div class="" >
-        <div class="flex gap-2 mt-2">
+        <div class="flex gap-2 mt-2 p-4">
             <x-input label="" placeholder="Search..." wire:model="search" />
         <div>
             <x-button  label="Search " wire:click.prevent="asss" green />
         </div>
 
         </div>
-        <div class=" overflow-x-auto mt-4  flex justify-center w-full" >
-            <table class=" text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 " >
+        <div class=" overflow-x-auto mt-4  flex justify-center w-screen p-4" >
+            <table class=" text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 w-screen p-4" >
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 ">
                     <tr class="">
                         <th scope="col" class="px-6 py-3 mr-12">
@@ -24,9 +24,6 @@
                          <th scope="col" class="px-6 py-3 mr-12">
                            Email
                           </th>
-                        <th scope="col" class="px-6 py-3 mr-12">
-                         Password
-                        </th>
 
                     </tr>
                 </thead>
@@ -45,9 +42,7 @@
                         <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white items-center">
                             {{ $cot->email }}
                         </td>
-                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            {{ $cot->password }}
-                        </td>
+
 
 
 
