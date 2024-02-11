@@ -4,6 +4,7 @@
    <label for="" class="text-yellow-900 text-2xl font-black">MY ORDER</label>
 
    @foreach ($product as $order)
+   <x-card>
     <div class="mt-4">
         <x-card class="">
             <div class="flex md:flex-row flex-col justify-around md:gap-6 gap-4   p-2 relative">
@@ -41,6 +42,7 @@
             </div>
             </x-card>
     </div>
+   </x-card>
     @endforeach
 
 

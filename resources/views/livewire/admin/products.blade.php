@@ -57,7 +57,7 @@
 
                     <td class="px-6 py-4 ">
                       <span class="flex gap-4">
-                        <x-button positive  wire:click="edit({{ $cot->id }})" label="Positive" />
+                        <x-button positive  wire:click="edit({{ $cot->id }})" label="Edit" />
                         <div x-data="{ title: 'Sure Delete?' }">
                             <x-button label="Delete" negative
                                 x-on:confirm="{

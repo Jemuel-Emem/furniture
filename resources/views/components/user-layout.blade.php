@@ -75,9 +75,6 @@
                 <a href="{{ route('user-dashboard') }}" class="hover:text-gray-400 mr-2">Home</a>
               </li>
               <li>
-                <a href="" class="hover:text-gray-400 mr-2">About</a>
-              </li>
-              <li>
                 <a href="{{ route('prod') }}" class="hover:text-gray-400 mr-2">All Products</a>
               </li>
               <li>
@@ -108,10 +105,17 @@
 
               </li>
               <li>
-                <a href="" class="hover:text-gray-400 mr-2">Contact us</a>
+                <a href="{{ route('contactus') }}" class="hover:text-gray-400 mr-2">Contact us</a>
               </li>
               <li>
-                <a href="{{ route('logout') }}"  class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent  md:p-0 dark:text-white md:dark:text-blue-500" aria-current="page">
+                <a href="{{ route('about') }}" class="hover:text-gray-400 mr-2">About</a>
+              </li>
+
+              <li>
+                <a href="{{ route('terms') }}" class="hover:text-gray-400 mr-2">Terms and Condition</a>
+              </li>
+              <li>
+                <a href="{{ route('logout') }}"  class="block py-2 px-3 text-red-500 rounded md:bg-transparent  md:p-0 dark:text-white md:dark:text-red-500" aria-current="page">
                 Logout
                 </a>
               </li>

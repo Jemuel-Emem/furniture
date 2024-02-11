@@ -80,6 +80,18 @@ Route::prefix('user')->middleware('user')->group(function () {
         return view('user.customize');
     })->name('customize');
 
+    Route::get('/contactus', function () {
+        return view('user.contactus');
+    })->name('contactus');
+
+    Route::get('/aboutus', function () {
+        return view('user.about');
+    })->name('about');
+
+    Route::get('/termsandcondition', function () {
+        return view('user.agreement');
+    })->name('terms');
+
 });
 
 Route::view('profile', 'profile')

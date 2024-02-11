@@ -17,7 +17,7 @@
         <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
 
             <div class="w-screen h-screen">
-                <img src="{{ asset('images/logo2.png') }}" alt="" class="w-full h-full blur-sm">
+                <img src="{{ asset('images/bg1.jpg') }}" alt="" class="w-full h-full blur-sm">
             </div>
 
             <div class="absolute top-24">
